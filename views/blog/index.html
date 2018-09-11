@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>日志列表</title>
+</head>
+<body>
+    <h1>日志列表</h1>
+
+    <!-- 搜索框 -->
+    <form>
+        <div>
+            关键字：<input type="text" name="keyword" value="<?=@$_GET['keyword']?>">
+            发表日期：
+            <input type="text" name="start_time" value="<?=@$_GET['start_time']?>">~
+            <input type="text" name="end_time" value="<?=@$_GET['end_time']?>">
+            是否显示：
+            <!-- 从地址栏里获取is_show的参数，继而判断选中状态并保留 -->
+            <input type="radio" name="is_show" value="" <?php if(@$_GET['is_show']!='1' && @$_GET['is_show']!=='0') echo 'checked'; ?>>全部
+            <input type="radio" name="is_show" value="1" <?php if(@$_GET['is_show']=='1') echo 'checked'; ?>>显示
+            <input type="radio" name="is_show" value="0" <?php if(@$_GET['is_show']==='0') echo 'checked'; ?>>不显示
+            <input type="submit" value="搜索">
+        </div>
+    </form>
+    <br>
+    
+    <table border="1" width=100%">
+        <tr>
+            <th>ID</th>
+            <th width="40%">标题</th>
+            <th>
+                发表日期
+                <a href="?odway=created_at&odby=desc">⇈</a>
+                <a href="?odway=created_at&odby=asc">⇊</a>
+            </th>
+            <th>修改日期</th>
+            <th>是否显示</th>
+            <th>
+                浏览量
+                <a href="?odway=display&odby=desc">⇈</a>
+                <a href="?odway=display&odby=asc">⇊</a>
+            </th>
+            <th>操作</th>
+        </tr>
+        <?php foreach($data as $v):?>
+        <tr>
+            <th><?=$v['ID']?></th>
+            <th><?=$v['title']?></th>
+            <th><?=$v['created_at']?></th>
+            <th><?=$v['updated_time']?></th>
+            <th><?=$v['is_show']?></th>
+            <th><?=$v['display']?></th>
+            <th>
+                <a href="">删除</a>
+                <a href="">修改</a>
+            </th>
+        </tr>
+        <?php endforeach;?>
+    </table>
+</body>
+</html>
