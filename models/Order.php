@@ -1,6 +1,8 @@
 <?php
 namespace models;
 
+use PDO;
+
 class Order extends Base
 {
     public function create($money)
@@ -10,7 +12,7 @@ class Order extends Base
         // 将数据插入数据库中
         $stmt = self::$pdo->prepare('INSERT INTO orders(user_id,money,sn) VALUES(?,?,?)');
         $stmt->execute([
-            $SESSION['id'],
+            $_SESSION['id'],
             $money,
             $flake->nextId()
         ]);

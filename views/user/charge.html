@@ -7,11 +7,12 @@
     <title>充值</title>
 </head>
 <body>
-    <?php view('common.nav') ?>
+
+    <?php view('common.nav')?>
     <h2>充值</h2>
 
     <form action="/user/docharge" method="post">
-        <!-- <?=csrf_field()?> -->
+ 
         <div>
             充值金额：
             <input type="text" name="money">元

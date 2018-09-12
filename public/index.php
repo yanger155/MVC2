@@ -1,6 +1,9 @@
 <?php
-//定义全局的常量保存根目录 
 
+session_start();
+
+
+//定义全局的常量保存根目录 
 // dirname(__FILE__);得到的是文件所在层目录名
 // D:/www/MVC2/public/index.php
 define('Root',dirname(dirname(__FILE__)).'/');
@@ -11,6 +14,9 @@ define('Root',dirname(dirname(__FILE__)).'/');
 // 得到D:/www/MVC2
 //define('Root',dirname(__FILE__).'/../');
 // str_replace('\\','/',Root);
+
+// 引入 composer  自动加载文件
+require(Root.'vendor/autoload.php');
 
 
 // 加载类文件
@@ -52,7 +58,7 @@ if(isset($_SERVER['PATH_INFO']))
 {
     $pathInfo = $_SERVER['PATH_INFO'];
     $pathInfo = explode('/',$pathInfo);
-    $controller = ucfirst($pathInfo[0]).'Controller';
+    $controller = ucfirst($pathInfo[1]).'Controller';
     $action = $pathInfo[2];
 }
 else
@@ -68,3 +74,12 @@ $_C ->$action();
 
 /***********MVC基本流程完成**********/
 
+function message($type,$url,$message,$second= 5 )
+{
+    // ==0的时候。 当前页提示信息，页面跳转
+    if(type==1)
+    {
+        
+    }
+   
+}

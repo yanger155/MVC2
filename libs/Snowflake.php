@@ -1,4 +1,6 @@
 <?php
+namespace libs;
+
 class Snowflake
 {  
     //开始时间,固定一个小于当前时间的毫秒数即可  
